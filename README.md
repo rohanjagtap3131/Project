@@ -1,2 +1,2 @@
-# Projeect
+# Project
 To add projects
