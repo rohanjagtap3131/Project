@@ -75,7 +75,10 @@ const sessionOptions = {
 }
 
 
-
+app.use((req, res, next) => {
+    res.locals.currUser = req.user || null;
+    next();
+});
 app.use(session(sessionOptions));
 app.use(flash())
 
