@@ -18,7 +18,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user.js');
-
+const connectDB = require("./config/db.js");
 const ListingRouter = require('./routes/listing.js');
 const reviewRouter = require('./routes/review.js');
 const userRouter = require('./routes/user.js');
@@ -38,6 +38,8 @@ app.engine("ejs", ejsMate);
 
 
 const port = 8080;
+
+connectDB().then(()=>{
   
 main()
     .then(() => {
@@ -112,4 +114,6 @@ app.use((err, req, res, next) => {
 
 app.listen(port, () => {
     console.log("App is lisning on port " + port);
+});
+
 });

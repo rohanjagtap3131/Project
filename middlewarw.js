@@ -25,7 +25,7 @@ module.exports.isOwnre = async(req, res, next) =>{
     let {id}= req.params;
     let listings = await listing.findById(id);
     if(!listings.owner.equals(res.locals.currUser._id)){
-        req.flash("error","You don't have axis to edit");
+        req.flash("error","You don't have  to edit");
        return res.redirect(`/listing/${id}`);
     }
     next();
@@ -57,7 +57,7 @@ module.exports.isAuthor = async(req, res, next) =>{
     let {id,reviewId}= req.params;
     let review = await Review.findById(reviewId);
     if(!review.author.equals(res.locals.currUser._id)){
-        req.flash("error","You don't have axis to delete");
+        req.flash("error","You don't have access to delete");
        return res.redirect(`/listing/${id}`);
     }
     next();
